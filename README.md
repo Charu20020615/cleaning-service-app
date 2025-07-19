@@ -76,7 +76,7 @@ npm run dev
 Email: admin123@gmail.com
 Password: admin123
 ```
-Enter the following credentials on the login page to access the admin dashboard
+Enter the following credentials on the User login page to access the admin dashboard
 
 ---
 
