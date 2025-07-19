@@ -108,3 +108,67 @@ cleaning-service-app/
 - Update the animated background in `components/ModernGradientBackground.jsx`.
 
 ---
+
+
+## 🛡️ What Can the Admin Do?
+
+The admin has special privileges to manage the platform and bookings. As an admin, you can:
+
+### 🔐 Log in with Admin Credentials
+- Access the admin dashboard using the default admin email and password.
+
+### 🧼 Manage Service Types
+- Add new cleaning service types (e.g., deep cleaning, carpet cleaning, etc.).
+- Edit existing service details (name, description, price, duration, availability).
+- Delete services that are no longer offered.
+
+### 📋 View and Manage All Bookings
+- See all bookings made by users.
+- Approve or confirm pending bookings.
+- Mark bookings as completed when the service is done.
+- Cancel bookings if necessary (e.g., due to scheduling conflicts).
+
+### 📊 Monitor Booking Status
+- Track the status of each booking (pending, confirmed, completed, cancelled).
+- View customer details for each booking.
+
+### 🧾 Dashboard Overview
+- Get a quick overview of total bookings, active bookings, completed services, and revenue.
+
+### 🔐 Role-Based Navigation
+- Access the service management and booking management pages that are only visible to admins.
+
+---
+
+
+
+
+
+
+## 🙋‍♂️ What Can Users Do?
+
+Regular users have access to a range of features to manage their cleaning service needs. As a user, you can:
+
+### 📝 Register and Log In
+- Create an account and securely log in to access your dashboard.
+
+### 🧹 Book Cleaning Services
+- Browse available cleaning service types.
+- Select a service, pick a date, and choose from smart, real-time available time slots.
+- Provide your contact details and any special instructions.
+
+### 📅 View and Manage Your Bookings
+- See a list of all your current and past bookings.
+- Check the status of each booking (pending, confirmed, completed, cancelled).
+- Cancel bookings if your plans change (before they are completed).
+
+### 🔄 Track Booking Status
+- Get real-time updates as your booking is approved, confirmed, completed, or cancelled by the admin.
+
+### 👤 Profile and Dashboard
+- View your profile information and booking statistics (total bookings, active bookings, completed services, total spent).
+- Access quick actions to book new services or view your booking history.
+
+### 🌈 Modern, Responsive UI
+- Enjoy a beautiful, animated, and mobile-friendly interface with dark mode and smooth navigation.
+
