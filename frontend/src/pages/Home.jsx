@@ -223,11 +223,14 @@ function Home() {
             <p className="text-green-200 text-sm text-center">View your bookings</p>
           </Link>
 
-          <div className="flex-1 min-w-[220px] max-w-xs bg-[#18122b]/90 border border-[#2d2346] text-white p-8 rounded-3xl shadow-2xl flex flex-col items-center backdrop-blur-md">
-            <div className="text-4xl mb-3">👤</div>
+          <Link
+            to="/profile"
+            className="flex-1 min-w-[220px] max-w-xs bg-[#18122b]/90 border border-[#2d2346] text-white p-8 rounded-3xl shadow-2xl hover:shadow-2xl transition duration-200 transform hover:-translate-y-1 flex flex-col items-center group backdrop-blur-md"
+          >
+            <div className="text-4xl mb-3 group-hover:scale-110 transition">👤</div>
             <h3 className="text-xl font-bold mb-1">Profile</h3>
             <p className="text-purple-200 text-sm text-center">Manage your account</p>
-          </div>
+          </Link>
         </div>
 
         {/* Dashboard Cards */}

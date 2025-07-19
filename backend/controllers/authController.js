@@ -46,3 +46,28 @@ exports.login = async (req, res) => {
     res.status(500).json({ msg: "Server error" });
   }
 }; 
+
+exports.updateProfile = async (req, res) => {
+  const userId = req.user.id;
+  const { name, email, password } = req.body;
+  try {
+    const updateFields = {};
+    if (name) updateFields.name = name;
+    if (email) updateFields.email = email;
+    if (password) {
+      updateFields.password = await bcrypt.hash(password, 10);
+    }
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { $set: updateFields },
+      { new: true, runValidators: true }
+    );
+    if (!updatedUser) return res.status(404).json({ msg: "User not found" });
+    res.json({
+      msg: "Profile updated successfully",
+      user: { id: updatedUser._id, name: updatedUser.name, email: updatedUser.email }
+    });
+  } catch (err) {
+    res.status(500).json({ msg: "Server error" });
+  }
+}; 

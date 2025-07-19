@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import ServiceManagement from "./pages/ServiceManagement";
 import BookingPage from "./pages/BookingPage";
 import MyBookings from "./pages/MyBookings";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/service-management" element={<ServiceManagement />} />
       <Route path="/booking" element={<BookingPage />} />
       <Route path="/my-bookings" element={<MyBookings />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }
