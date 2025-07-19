@@ -262,11 +262,27 @@ export default function BookingPage() {
           <p className="text-gray-300 text-lg">Select a service and choose your preferred time slot</p>
         </div>
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Left Column - Service Selection */}
+          {/* Left Column - Date and Service Selection */}
           <div className="space-y-6">
+            {/* Date Selection - now always visible */}
+            <div className="bg-[#18122b]/90 border border-[#2d2346] rounded-2xl shadow-2xl p-6 backdrop-blur-md">
+              <h2 className="text-xl font-bold text-gray-100 mb-4">1. Select Date</h2>
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                min={getMinDate()}
+                className="w-full px-4 py-3 border border-[#2d2346] rounded-lg bg-[#18122b] text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+              />
+              {selectedDate && (
+                <p className="text-sm text-gray-300 mt-2">
+                  Selected: {formatDate(selectedDate)}
+                </p>
+              )}
+            </div>
             {/* Service Selection */}
             <div className="bg-[#18122b]/90 border border-[#2d2346] rounded-2xl shadow-2xl p-6 backdrop-blur-md">
-              <h2 className="text-xl font-bold text-gray-100 mb-4">1. Choose a Service</h2>
+              <h2 className="text-xl font-bold text-gray-100 mb-4">2. Choose a Service</h2>
               <div className="space-y-3">
                 {services.map(service => (
                   <div
@@ -295,24 +311,6 @@ export default function BookingPage() {
                 ))}
               </div>
             </div>
-            {/* Date Selection */}
-            {selectedService && (
-              <div className="bg-[#18122b]/90 border border-[#2d2346] rounded-2xl shadow-2xl p-6 backdrop-blur-md">
-                <h2 className="text-xl font-bold text-gray-100 mb-4">2. Select Date</h2>
-                <input
-                  type="date"
-                  value={selectedDate}
-                  onChange={(e) => setSelectedDate(e.target.value)}
-                  min={getMinDate()}
-                  className="w-full px-4 py-3 border border-[#2d2346] rounded-lg bg-[#18122b] text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                />
-                {selectedDate && (
-                  <p className="text-sm text-gray-300 mt-2">
-                    Selected: {formatDate(selectedDate)}
-                  </p>
-                )}
-              </div>
-            )}
           </div>
           {/* Right Column - Time Slots and Booking */}
           <div className="space-y-6">
@@ -326,19 +324,20 @@ export default function BookingPage() {
                     <span className="ml-2 text-gray-300">Loading available slots...</span>
                   </div>
                 ) : availableSlots.length > 0 ? (
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-4 gap-2">
                     {availableSlots.map((slot, index) => (
                       <button
                         key={index}
                         onClick={() => setSelectedSlot(slot)}
-                        className={`p-3 border-2 rounded-lg text-center transition duration-200 ${
+                        className={`p-2 border-2 rounded-md text-center transition duration-200 text-xs ${
                           selectedSlot?.startTime === slot.startTime
                             ? 'border-green-400 bg-green-900/30 text-green-200'
                             : 'border-[#2d2346] hover:border-green-400 hover:bg-green-900/10 text-gray-100'
                         }`}
+                        style={{ minWidth: 0 }}
                       >
-                        <div className="font-semibold">{slot.startTime}</div>
-                        <div className="text-sm text-gray-400">to {slot.endTime}</div>
+                        <div className="font-semibold text-xs">{slot.startTime}</div>
+                        <div className="text-[10px] text-gray-400">to {slot.endTime}</div>
                       </button>
                     ))}
                   </div>

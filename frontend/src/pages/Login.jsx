@@ -128,10 +128,23 @@ export default function Login() {
     setError(""); // Clear error when user types
   };
 
+  const validate = () => {
+    if (!form.email) return "Email is required.";
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) return "Invalid email format.";
+    if (!form.password) return "Password is required.";
+    if (form.password.length < 7) return "Password must be at least 7 characters.";
+    return "";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setError("");
+    const validationError = validate();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+    setLoading(true);
     
     try {
       const res = await axios.post("http://localhost:5000/api/auth/login", form);

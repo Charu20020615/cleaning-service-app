@@ -266,30 +266,30 @@ export default function ServiceManagement() {
         )}
 
         {/* Services List */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {services.map(service => (
-            <div key={service._id} className="bg-white rounded-2xl shadow-xl p-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold text-gray-900">{service.serviceName}</h3>
-                <div className="flex space-x-2">
+            <div key={service._id} className="bg-white rounded-xl shadow p-3">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-base font-semibold text-gray-900">{service.serviceName}</h3>
+                <div className="flex space-x-1">
                   <button
                     onClick={() => handleEdit(service)}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                    className="text-blue-600 hover:text-blue-800 text-xs font-medium"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(service._id)}
-                    className="text-red-600 hover:text-red-800 text-sm font-medium"
+                    className="text-red-600 hover:text-red-800 text-xs font-medium"
                   >
                     Delete
                   </button>
                 </div>
               </div>
 
-              <p className="text-gray-600 mb-4">{service.description}</p>
+              <p className="text-gray-600 mb-2 text-xs">{service.description}</p>
 
-              <div className="space-y-2">
+              <div className="space-y-1 text-xs">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Price:</span>
                   <span className="font-semibold">LKR {service.price}</span>
@@ -300,7 +300,7 @@ export default function ServiceManagement() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Available:</span>
-                  <span className="font-semibold text-sm">
+                  <span className="font-semibold text-xs">
                     {service.availability.join(", ")}
                   </span>
                 </div>
