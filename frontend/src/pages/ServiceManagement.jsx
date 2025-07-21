@@ -114,6 +114,17 @@ export default function ServiceManagement() {
     }
   };
 
+  const handleDeleteBooking = async (bookingId) => {
+    if (window.confirm("Are you sure you want to permanently delete this booking? This cannot be undone.")) {
+      try {
+        await axios.delete(`http://localhost:5000/api/bookings/${bookingId}`);
+        fetchBookings();
+      } catch (error) {
+        alert(error.response?.data?.msg || "Error deleting booking");
+      }
+    }
+  };
+
   const resetForm = () => {
     setFormData({
       serviceName: "",
@@ -382,6 +393,12 @@ export default function ServiceManagement() {
                             Done
                           </button>
                         )}
+                        <button
+                          onClick={() => handleDeleteBooking(booking._id)}
+                          className="bg-red-700 hover:bg-red-800 text-white px-3 py-1 rounded text-xs font-medium"
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}

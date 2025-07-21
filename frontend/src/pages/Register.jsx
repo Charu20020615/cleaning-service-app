@@ -125,36 +125,15 @@ export default function Register() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    if (e.target.name === "name") {
-      // Remove numbers from input
-      const value = e.target.value.replace(/[0-9]/g, "");
-      setForm({ ...form, [e.target.name]: value });
-    } else {
-      setForm({ ...form, [e.target.name]: e.target.value });
-    }
+    setForm({ ...form, [e.target.name]: e.target.value });
     setError(""); // Clear error when user types
-  };
-
-  const validate = () => {
-    if (!form.name) return "Name is required.";
-    if (/[0-9]/.test(form.name)) return "Name cannot contain numbers.";
-    if (!form.email) return "Email is required.";
-    if (!/^\S+@\S+\.\S+$/.test(form.email)) return "Invalid email format.";
-    if (!form.password) return "Password is required.";
-    if (form.password.length < 7) return "Password must be at least 7 characters.";
-    return "";
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setError("");
     setSuccess("");
-    const validationError = validate();
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
-    setLoading(true);
     
     try {
       const res = await axios.post("http://localhost:5000/api/auth/register", form);

@@ -258,4 +258,19 @@ exports.cancelBooking = async (req, res) => {
     console.error("Error cancelling booking:", err);
     res.status(500).json({ msg: "Server error" });
   }
+};
+
+// Delete booking (admin)
+exports.deleteBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const booking = await Booking.findByIdAndDelete(id);
+    if (!booking) {
+      return res.status(404).json({ msg: "Booking not found" });
+    }
+    res.json({ msg: "Booking deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting booking:", err);
+    res.status(500).json({ msg: "Server error" });
+  }
 }; 
